@@ -50,10 +50,10 @@ Note: Primary Keys are denoted in the ER-Diagram with a yellow key icon.
 	Answer: no
 	
 	
-	SQL code used to arrive at answer:
-	SELECT *
-      FROM user 
-      WHERE coalesce(id,name,review_count,yelping_since,useful,funny,cool,fans,compliment_photos) IS NULL
+SQL code used to arrive at answer:
+SELECT *
+FROM user 
+WHERE coalesce(id,name,review_count,yelping_since,useful,funny,cool,fans,compliment_photos) IS NULL    /* we can use the coalesce method to check the null values in case of                                                                                                            multiple tables
 	
 
 	
@@ -89,12 +89,12 @@ Note: Primary Keys are denoted in the ER-Diagram with a yellow key icon.
 
 	SQL code used to arrive at answer:
 
-      SELECT
-       city
-      ,SUM(review_count)
-      FROM business 
-      GROUP BY city
-      ORDER BY COUNT(review_count) DESC
+SELECT
+city
+,SUM(review_count)
+FROM business 
+GROUP BY city
+ORDER BY COUNT(review_count) DESC
 	
 	Copy and Paste the Result Below:
 +-----------------+-------------------+
@@ -134,7 +134,7 @@ i. Avon
 
 SQL code used to arrive at answer:
 
- SELECT
+SELECT
   city
 , stars
 , COUNT(stars)
@@ -197,12 +197,12 @@ Copy and Paste the Resulting Table Below (2 columns â€“ star rating and cou
 		
 	SQL code used to arrive at answer:
 	
-      SELECT
-      name
-      , (review_count)
-      FROM user
-      ORDER BY review_count DESC
-      LIMIT 3
+SELECT
+ name
+, (review_count)
+FROM user
+ORDER BY review_count DESC
+LIMIT 3
 		
 	Copy and Paste the Result Below:
        
@@ -219,14 +219,16 @@ Copy and Paste the Resulting Table Below (2 columns â€“ star rating and cou
 8. Does posing more reviews correlate with more fans?
 
 	Please explain your findings and interpretation of the results:
+	
 	No it the review_count is not dependent of the no.of fans. According to the below table you can clarify the same.
-      Take the Example of Sara, she has second highest review count but her fan count is comparatively low than the others. 
+        Take the Example of Sara, she has second highest review count but her fan count is comparatively low than the others. 
+RESULT
 +-----------+--------------+------+
 | name      | review_count | fans |
 +-----------+--------------+------+
 | Gerald    |         2000 |  253 |
 | Sara      |         1629 |   50 |
-| Yuri      |         1339 |   76 |
+| Yuri      |         1339 |   76 T
 | .Hon      |         1246 |  101 |
 | William   |         1215 |  126 |
 | Harald    |         1153 |  311 |
